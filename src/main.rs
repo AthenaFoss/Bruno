@@ -4,6 +4,10 @@ use std::fs;
 use std::path::Path;
 use std::process::Command;
 
+// Import the content module
+mod content;
+use content::templates;
+
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 #[command(propagate_version = true)]
@@ -34,7 +38,7 @@ fn main() -> Result<()> {
 }
 
 fn init_project(project_name: &str) -> Result<()> {
-    println!("Initializing new Bruno project: {}", project_name);
+    println!("Initializing new 🐶 Bruno project: {}", project_name);
 
     // Create the project directory
     let project_dir = Path::new(project_name);
@@ -55,7 +59,7 @@ fn init_project(project_name: &str) -> Result<()> {
         anyhow::bail!("Failed to initialize Cargo project: {}", error);
     }
 
-    // Create a basic project structure
+    // Create a basic project structure using templates
     create_project_structure(project_dir)?;
 
     // Generate custom Cargo.toml with dependencies
@@ -76,54 +80,71 @@ fn create_project_structure(project_dir: &Path) -> Result<()> {
     // Create src directory structure
     let src_dir = project_dir.join("src");
 
-    // Create directories
-    fs::create_dir_all(src_dir.join("models"))?;
-    fs::create_dir_all(src_dir.join("controllers"))?;
-    fs::create_dir_all(src_dir.join("views"))?;
-    fs::create_dir_all(src_dir.join("utils"))?;
+    // Create required directories
+    //fs::create_dir_all(src_dir.join("models"))?;
+    //fs::create_dir_all(src_dir.join("controllers"))?;
+    //fs::create_dir_all(src_dir.join("views"))?;
+    //fs::create_dir_all(src_dir.join("utils"))?;
 
-    // Create a README.md file
-    let readme_content = "# Bruno Project\n\nA project created with Bruno CLI.\n";
-    fs::write(project_dir.join("README.md"), readme_content)?;
+    // Create files using templates from content.rs
 
-    // Create a .gitignore file
-    let gitignore_content = "/target\nCargo.lock\n";
-    fs::write(project_dir.join(".gitignore"), gitignore_content)?;
+    // Create lib.rs
+    fs::write(src_dir.join("lib.rs"), templates::lib_rs())?;
 
-    // Create a basic config file
-    let config_content = r#"{
-    "name": "bruno-project",
-    "version": "0.1.0",
-    "description": "A project created with Bruno CLI"
-}"#;
-    fs::write(project_dir.join("bruno.json"), config_content)?;
+    // Create main.rs
+    fs::write(src_dir.join("main.rs"), templates::main_rs())?;
 
-    // Create a sample main.rs
-    let main_content = r#"mod models;
-mod controllers;
-mod views;
-mod utils;
+    // Create .env.example
+    fs::write(project_dir.join(".env.example"), templates::env())?;
 
-fn main() {
-    println!("Welcome to your Bruno project!");
-}
-"#;
-    fs::write(src_dir.join("main.rs"), main_content)?;
+    // Create models files
+    //fs::write(
+    //    src_dir.join("models").join("mod.rs"),
+    //    templates::models::mod_rs(),
+    //)?;
+    //fs::write(
+    //    src_dir.join("models").join("user.rs"),
+    //    templates::models::user_rs(),
+    //)?;
 
-    // Create basic module files
-    fs::write(
-        src_dir.join("models.rs"),
-        "// Define your data models here\n",
-    )?;
-    fs::write(
-        src_dir.join("controllers.rs"),
-        "// Define your controllers here\n",
-    )?;
-    fs::write(src_dir.join("views.rs"), "// Define your views here\n")?;
-    fs::write(
-        src_dir.join("utils.rs"),
-        "// Define your utility functions here\n",
-    )?;
+    // Create utils files
+    //fs::write(
+    //    src_dir.join("utils").join("mod.rs"),
+    //    templates::utils::mod_rs(),
+    //)?;
+    //fs::write(
+    //    src_dir.join("utils").join("config.rs"),
+    //    templates::utils::config_rs(),
+    //)?;
+    //fs::write(
+    //    src_dir.join("utils").join("logger.rs"),
+    //    templates::utils::logger_rs(),
+    //)?;
+
+    // Create controllers files
+    //fs::write(
+    //    src_dir.join("controllers").join("mod.rs"),
+    //    templates::controllers::mod_rs(),
+    //)?;
+    //fs::write(
+    //    src_dir.join("controllers").join("app.rs"),
+    //    templates::controllers::app_rs(),
+    //)?;
+
+    // Create views files
+    //fs::write(
+    //    src_dir.join("views").join("mod.rs"),
+    //    templates::views::mod_rs(),
+    //)?;
+    //fs::write(
+    //    src_dir.join("views").join("ui.rs"),
+    //    templates::views::ui_rs(),
+    //)?;
+
+    // Create configuration files
+    fs::write(project_dir.join("README.md"), templates::readme_md())?;
+    fs::write(project_dir.join(".gitignore"), templates::gitignore())?;
+    fs::write(project_dir.join("bruno.json"), templates::bruno_json())?;
 
     Ok(())
 }
