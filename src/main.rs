@@ -38,7 +38,19 @@ fn main() -> Result<()> {
 }
 
 fn init_project(project_name: &str) -> Result<()> {
-    println!("🐶Bruno Is Cooking Your Stylus Project: {}", project_name);
+    println!("\x1b[38;2;255;160;122m"); // Custom RGB color for coral/orange
+    println!(r#"
+▄▄▄▄· ▄▄▄  ▄• ▄▌ ▐ ▄       
+▐█ ▀█▪▀▄ █·█▪██▌•█▌▐█▪     
+▐█▀▀█▄▐▀▀▄ █▌▐█▌▐█▐▐▌ ▄█▀▄ 
+██▄▪▐█▐█•█▌▐█▄█▌██▐█▌▐█▌.▐▌
+·▀▀▀▀ .▀  ▀ ▀▀▀ ▀▀ █▪ ▀█▄▀▪
+"#);
+    println!("\x1b[0m");
+
+    // Display project initialization message with styling
+    println!("\x1b[38;2;255;160;122m🚀 Initializing Bruno Project: {}\x1b[0m", project_name);
+    println!("\x1b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m");
 
     // Create the project directory
     let project_dir = Path::new(project_name);
@@ -65,13 +77,12 @@ fn init_project(project_name: &str) -> Result<()> {
     // Generate custom Cargo.toml with dependencies
     update_cargo_toml(project_dir, project_name)?;
 
-    println!(
-        "✅ Bruno project '{}' initialized successfully!",
-        project_name
-    );
-    println!("Run the following commands to get started:");
-    println!("cd {}", project_name);
-    println!("bruno build");
+    println!("\x1b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m");
+    println!("\x1b[38;2;255;160;122m✅ Project '{}' initialized successfully!\x1b[0m", project_name);
+    println!("\n\x1b[38;2;255;160;122m📋 Next steps:\x1b[0m");
+    println!("\x1b[38;2;255;160;122m$ cd {}\x1b[0m", project_name);
+    println!("\x1b[38;2;255;160;122m$ bruno build\x1b[0m");
+    println!("\x1b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m");
     Ok(())
 }
 
