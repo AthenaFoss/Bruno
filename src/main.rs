@@ -80,12 +80,6 @@ fn create_project_structure(project_dir: &Path) -> Result<()> {
     // Create src directory structure
     let src_dir = project_dir.join("src");
 
-    // Create required directories
-    //fs::create_dir_all(src_dir.join("models"))?;
-    //fs::create_dir_all(src_dir.join("controllers"))?;
-    //fs::create_dir_all(src_dir.join("views"))?;
-    //fs::create_dir_all(src_dir.join("utils"))?;
-
     // Create files using templates from content.rs
 
     // Create lib.rs
@@ -96,50 +90,6 @@ fn create_project_structure(project_dir: &Path) -> Result<()> {
 
     // Create .env.example
     fs::write(project_dir.join(".env.example"), templates::env())?;
-
-    // Create models files
-    //fs::write(
-    //    src_dir.join("models").join("mod.rs"),
-    //    templates::models::mod_rs(),
-    //)?;
-    //fs::write(
-    //    src_dir.join("models").join("user.rs"),
-    //    templates::models::user_rs(),
-    //)?;
-
-    // Create utils files
-    //fs::write(
-    //    src_dir.join("utils").join("mod.rs"),
-    //    templates::utils::mod_rs(),
-    //)?;
-    //fs::write(
-    //    src_dir.join("utils").join("config.rs"),
-    //    templates::utils::config_rs(),
-    //)?;
-    //fs::write(
-    //    src_dir.join("utils").join("logger.rs"),
-    //    templates::utils::logger_rs(),
-    //)?;
-
-    // Create controllers files
-    //fs::write(
-    //    src_dir.join("controllers").join("mod.rs"),
-    //    templates::controllers::mod_rs(),
-    //)?;
-    //fs::write(
-    //    src_dir.join("controllers").join("app.rs"),
-    //    templates::controllers::app_rs(),
-    //)?;
-
-    // Create views files
-    //fs::write(
-    //    src_dir.join("views").join("mod.rs"),
-    //    templates::views::mod_rs(),
-    //)?;
-    //fs::write(
-    //    src_dir.join("views").join("ui.rs"),
-    //    templates::views::ui_rs(),
-    //)?;
 
     // Create configuration files
     fs::write(project_dir.join("README.md"), templates::readme_md())?;
