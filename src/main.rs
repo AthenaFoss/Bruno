@@ -38,7 +38,7 @@ fn main() -> Result<()> {
 }
 
 fn init_project(project_name: &str) -> Result<()> {
-    println!("🐶Bruno Is Cooking Your Stylus Project: ", project_name);
+    println!("🐶Bruno Is Cooking Your Stylus Project: {}", project_name);
 
     // Create the project directory
     let project_dir = Path::new(project_name);
