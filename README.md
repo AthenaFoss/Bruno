@@ -1,15 +1,28 @@
-## Build your CLI tool
+# Bruno CLI
+
+A command-line tool for generating Rust project scaffolding with a predefined structure.
+
+## Installation
+
+```bash
+cargo install --git https://github.com/AthenaFoss/Bruno --force
 ```
+
+## Build your CLI tool
+
+```bash
 cargo build --release
 ```
 
 ## Install your CLI tool globally
-```
+
+```bash
 cargo install --path .
 ```
 
 ## After installation, you'll be able to run:
-```
+
+```bash
 bruno init my-project
 ```
 
