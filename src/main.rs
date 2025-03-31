@@ -38,7 +38,7 @@ fn main() -> Result<()> {
 }
 
 fn init_project(project_name: &str) -> Result<()> {
-    println!("Initializing new 🐶 Bruno project: {}", project_name);
+    println!("🐶Bruno Is Cooking Your Stylus Project: ", project_name);
 
     // Create the project directory
     let project_dir = Path::new(project_name);
@@ -70,9 +70,8 @@ fn init_project(project_name: &str) -> Result<()> {
         project_name
     );
     println!("Run the following commands to get started:");
-    println!("  cd {}", project_name);
-    println!("  cargo build");
-
+    println!("cd {}", project_name);
+    println!("bruno build");
     Ok(())
 }
 
