@@ -1,6 +1,17 @@
+
 # Bruno CLI
 
+<div align="center">
+  <img src="assets/logo.png" alt="Bruno CLI Logo">
+</div>
+
 A command-line tool for generating Rust project scaffolding with a predefined structure.
+
+<div align="center">
+  <img src="assets/banner.png" alt="Banner">
+</div>
+
+
 
 ## Installation
 
