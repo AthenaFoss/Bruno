@@ -2,13 +2,13 @@
 # Bruno CLI
 
 <div align="center">
-  <img src="assets/logo.png" alt="Bruno CLI Logo">
+  <img src="assets/logo.png" alt="Bruno CLI Logo" width="20%">
 </div>
 
-A command-line tool for generating Rust project scaffolding with a predefined structure.
+A command-line tool for generating stylus project scaffolding.
 
 <div align="center">
-  <img src="assets/banner.png" alt="Banner">
+  <img src="assets/banner.png" alt="Banner" width="70%">
 </div>
 
 
