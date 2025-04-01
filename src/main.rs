@@ -39,17 +39,22 @@ fn main() -> Result<()> {
 
 fn init_project(project_name: &str) -> Result<()> {
     println!("\x1b[38;2;255;160;122m"); // Custom RGB color for coral/orange
-    println!(r#"
+    println!(
+        r#"
 ▄▄▄▄· ▄▄▄  ▄• ▄▌ ▐ ▄       
 ▐█ ▀█▪▀▄ █·█▪██▌•█▌▐█▪     
 ▐█▀▀█▄▐▀▀▄ █▌▐█▌▐█▐▐▌ ▄█▀▄ 
 ██▄▪▐█▐█•█▌▐█▄█▌██▐█▌▐█▌.▐▌
 ·▀▀▀▀ .▀  ▀ ▀▀▀ ▀▀ █▪ ▀█▄▀▪
-"#);
+"#
+    );
     println!("\x1b[0m");
 
     // Display project initialization message with styling
-    println!("\x1b[38;2;255;160;122m🚀 Initializing Bruno Project: {}\x1b[0m", project_name);
+    println!(
+        "\x1b[38;2;255;160;122m🚀 Initializing Bruno Project: {}\x1b[0m",
+        project_name
+    );
     println!("\x1b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m");
 
     // Create the project directory
@@ -78,10 +83,19 @@ fn init_project(project_name: &str) -> Result<()> {
     update_cargo_toml(project_dir, project_name)?;
 
     println!("\x1b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m");
-    println!("\x1b[38;2;255;160;122m✅ Project '{}' initialized successfully!\x1b[0m", project_name);
+    println!(
+        "\x1b[38;2;255;160;122m✅ Project '{}' initialized successfully!\x1b[0m",
+        project_name
+    );
     println!("\n\x1b[38;2;255;160;122m📋 Next steps:\x1b[0m");
     println!("\x1b[38;2;255;160;122m$ cd {}\x1b[0m", project_name);
     println!("\x1b[38;2;255;160;122m$ bruno build\x1b[0m");
+    println!("\x1b[38;2;255;160;122m$ bruno deploy\x1b[0m");
+    println!("\x1b[38;2;255;160;122m$ bruno check\x1b[0m");
+    println!("\x1b[38;2;255;160;122m$ bruno verify\x1b[0m");
+    println!("\x1b[38;2;255;160;122m$ bruno export-abi\x1b[0m");
+    println!("\x1b[38;2;255;160;122m$ bruno help\x1b[0m");
+
     println!("\x1b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\x1b[0m");
     Ok(())
 }
